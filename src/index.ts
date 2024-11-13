@@ -1,27 +1,17 @@
-// increasing order
-function merge(nums1: number[], m: number, nums2: number[], n: number) {
-  let i = m - 1 // points the last element of the valid part of nums1
-  let j = n - 1 // points the last element of nums2
-  let k = m + n - 1 // points the last index of nums1
-
-  while (i >= 0 && j >= 0) {
-    if (nums1[i] > nums2[j]) {
-      nums1[k] = nums1[i]
-      i--
-      //
-    } else {
-      nums1[k] = nums2[j]
-      j--
+function removeElement(nums: number[], val: number) {
+  let k = 0
+  for (let n of nums) {
+    if (n !== val) {
+      nums[k] = n
+      k++
     }
-    k--
   }
 
-  // If there are any remaining elements in nums2, copy them over
-  while (j >= 0) {
-    nums1[k] = nums2[j]
-    j--
-    k--
-  }
-
-  // No need to check for nums1, as if any elements are left, they're already in place
+  return k
 }
+
+const r1 = removeElement([3, 2, 2, 3], 3)
+const r2 = removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
+
+console.log(r1, '🔥') // 2
+console.log(r2, '🔥') // 5
