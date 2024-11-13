@@ -139,3 +139,25 @@ Consistency is Key: Regular practice is one of the best ways to improve your pro
 Learn from Mistakes: Review the problems you get wrong. Understand why your approach didn’t work and how you can improve for next time.
 
 By mastering these terms and techniques, you'll be well on your way to becoming proficient at solving LeetCode problems and performing well in coding interviews.
+
+<br>
+<br>
+
+# In-place y out-of-place (data structures)
+
+## 1. In-place:
+
+"in-place" significa que un algoritmo o operación no utiliza memoria adicional para crear una nueva estructura de datos o arreglo. Modifica los datos directamente en el lugar donde están almacenados.
+
+Por ejemplo, en el problema que discutimos anteriormente (removeElement), cuando se te pide que elimines elementos in-place, debes modificar el arreglo original sin crear un arreglo nuevo.
+
+Características de los algoritmos in-place:
+Espacio adicional constante (O(1)): Los algoritmos in-place requieren un espacio adicional muy pequeño, generalmente solo unas pocas variables para realizar el seguimiento o control de los índices, pero no usan estructuras de datos adicionales.
+Modificación directa: Cambian los datos directamente en su ubicación original.
+Ejemplo: Los algoritmos de ordenación como QuickSort y BubbleSort son in-place porque reorganizan los elementos dentro del mismo arreglo, sin usar espacio adicional significativo.
+
+## 2. Out-of-place:
+
+Por el contrario, "out-of-place" se refiere a operaciones que requieren espacio adicional para almacenar los resultados de la operación. Es decir, no modifican la estructura de datos original, sino que crean una nueva estructura para almacenar los resultados.
+
+Ejemplo: Un algoritmo como MergeSort es generalmente considerado out-of-place, ya que requiere arreglos adicionales para almacenar las sublistas durante el proceso de mezcla.
