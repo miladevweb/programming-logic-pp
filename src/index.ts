@@ -1,9 +1,7 @@
-function strStr(haystack: string, needle: string): number {
-  // Si la subcadena needle está vacía, devolver 0
-  if (needle === '') {
-    return 0
-  }
+function isPalindrome(s: string): boolean {
+  // Filtrar solo caracteres alfanuméricos y convertir todo a minúsculas
+  const cleaned = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
 
-  // Buscar la primera aparición de needle en haystack
-  return haystack.indexOf(needle)
+  // Verificar si la cadena limpia es un palíndromo comparando con su reverso
+  return cleaned === cleaned.split('').reverse().join('')
 }
