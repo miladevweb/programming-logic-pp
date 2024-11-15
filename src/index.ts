@@ -1,28 +1,18 @@
-function majorityElement(nums: number[]): number {
-  let candidate = 0
-  let count = 0
+function rotate(nums: number[], k: number): void {
+  const n = nums.length
+  k = k % n // Asegurarnos de no rotar más de lo necesario
 
-  // Fase 1: Encontrar un candidato
-  for (const num of nums) {
-    if (count === 0) {
-      candidate = num
-    }
-    count += num === candidate ? 1 : -1
-  }
-
-  // Fase 2 (opcional): Confirmar que el candidato es mayoritario
-  // Aunque el problema asume que siempre hay un elemento mayoritario,
-  // podríamos contar las apariciones para validar.
-  count = 0
-  for (const num of nums) {
-    if (num === candidate) {
-      count++
+  // Helper para invertir una parte del array
+  function reverse(start: number, end: number): void {
+    while (start < end) {
+      ;[nums[start], nums[end]] = [nums[end], nums[start]]
+      start++
+      end--
     }
   }
 
-  if (count > Math.floor(nums.length / 2)) {
-    return candidate
-  }
-
-  throw new Error('No majority element found, which violates the problem constraints')
+  // Pasos del algoritmo
+  reverse(0, n - 1) // Paso 1: Invertir todo el array
+  reverse(0, k - 1) // Paso 2: Invertir los primeros k elementos
+  reverse(k, n - 1) // Paso 3: Invertir el resto
 }
