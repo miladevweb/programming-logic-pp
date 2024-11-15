@@ -1,19 +1,16 @@
-function canJump(nums: number[]): boolean {
-  let farthest = 0 // El índice más lejano que se puede alcanzar actualmente
+function hIndex(citations: number[]): number {
+  // Ordenamos el array en orden descendente
+  citations.sort((a, b) => b - a)
 
-  for (let i = 0; i < nums.length; i++) {
-    if (i > farthest) {
-      // Si no podemos alcanzar el índice actual, devolvemos false
-      return false
-    }
-    // Actualizamos el índice más lejano que podemos alcanzar
-    farthest = Math.max(farthest, i + nums[i])
-
-    // Si podemos alcanzar el último índice, devolvemos true
-    if (farthest >= nums.length - 1) {
-      return true
+  // Iteramos para encontrar el h-index
+  let h = 0
+  for (let i = 0; i < citations.length; i++) {
+    if (citations[i] >= i + 1) {
+      h = i + 1 // Actualizamos el h-index
+    } else {
+      break // Salimos si no se cumple la condición
     }
   }
 
-  return false
+  return h
 }

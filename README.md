@@ -1,27 +1,29 @@
-You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper, return the researcher's h-index.
 
-Return true if you can reach the last index, or false otherwise.
+According to the definition of h-index on Wikipedia: The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
 ### Example 1:
 
-    Input: nums = [2,3,1,1,4]
+    Input: citations = [3,0,6,1,5]
 
-    Output: true
+    Output: 3
 
-    Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+    Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations respectively.
+
+Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, their h-index is 3.
 
 ### Example 2:
 
-    Input: nums = [3,2,1,0,4]
+    Input: citations = [1,3,1]
 
-    Output: false
-
-    Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+    Output: 1
 
 <br>
 
 ## Constraints:
 
-    1 <= nums.length <= 104
+    n == citations.length
 
-    0 <= nums[i] <= 105
+    1 <= n <= 5000
+
+    0 <= citations[i] <= 1000
