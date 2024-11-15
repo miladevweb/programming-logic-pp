@@ -1,30 +1,31 @@
-function romanToInt(s: string): number {
-  // Mapa de valores romanos
-  const romanMap: { [key: string]: number } = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000,
-  }
+function intToRoman(num: number): string {
+  // Mapa de valores y símbolos romanos
+  const romanMap: { value: number; symbol: string }[] = [
+    { value: 1000, symbol: 'M' },
+    { value: 900, symbol: 'CM' },
+    { value: 500, symbol: 'D' },
+    { value: 400, symbol: 'CD' },
+    { value: 100, symbol: 'C' },
+    { value: 90, symbol: 'XC' },
+    { value: 50, symbol: 'L' },
+    { value: 40, symbol: 'XL' },
+    { value: 10, symbol: 'X' },
+    { value: 9, symbol: 'IX' },
+    { value: 5, symbol: 'V' },
+    { value: 4, symbol: 'IV' },
+    { value: 1, symbol: 'I' },
+  ]
 
-  let total = 0
+  let result = ''
 
-  for (let i = 0; i < s.length; i++) {
-    // Valor del carácter actual
-    const current = romanMap[s[i]]
-    // Valor del carácter siguiente (si existe)
-    const next = romanMap[s[i + 1]]
-
-    // Si el valor actual es menor que el siguiente, se aplica la sustracción
-    if (current < next) {
-      total -= current
-    } else {
-      total += current
+  // Iteramos sobre el mapa de valores y símbolos
+  for (const { value, symbol } of romanMap) {
+    // Mientras el número sea mayor o igual al valor actual
+    while (num >= value) {
+      result += symbol // Añadimos el símbolo romano al resultado
+      num -= value // Reducimos el número
     }
   }
 
-  return total
+  return result
 }
