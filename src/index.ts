@@ -1,24 +1,24 @@
-function calPoints(ops: string[]) {
-  let stack: number[] = []
+function isValid(s: string): boolean {
+  let stack: string[] = [] // La pila es un arreglo de cadenas
+  const matchingBrackets: { [key: string]: string } = {
+    '(': ')',
+    '{': '}',
+    '[': ']',
+  }
 
-  for (let op of ops) {
-    if (op === 'C') {
-      // Eliminar el último puntaje
-      stack.pop()
-    } else if (op === 'D') {
-      // Duplicar el último puntaje
-      stack.push(stack[stack.length - 1] * 2)
-    } else if (op === '+') {
-      // Sumar los dos últimos puntajes
-      let last = stack[stack.length - 1]
-      let secondLast = stack[stack.length - 2]
-      stack.push(last + secondLast)
+  for (let char of s) {
+    // Si es un paréntesis de apertura, lo agregamos a la pila
+    if (matchingBrackets[char]) {
+      stack.push(char)
     } else {
-      // Es un puntaje numérico
-      stack.push(Number(op))
+      // Si es un paréntesis de cierre, verificamos que coincida con el último de la pila
+      let last = stack.pop()
+      if (matchingBrackets[last as keyof typeof matchingBrackets] !== char) {
+        return false // No coincide con el tipo de paréntesis de apertura
+      }
     }
   }
 
-  // Retornar la suma total de los puntajes
-  return stack.reduce((sum, score) => sum + score, 0)
+  // Si la pila está vacía, todos los paréntesis se han cerrado correctamente
+  return stack.length === 0
 }
