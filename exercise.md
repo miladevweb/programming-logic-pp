@@ -1,54 +1,78 @@
-Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+You are keeping score for a baseball game with strange rules. The game consists of several rounds, where the scores of past rounds may affect future rounds' scores.
 
-Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+At the beginning of the game, you start with an empty record. You are given a list of strings ops, where ops[i] is the ith operation you must apply to the record and is one of the following:
 
-Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.
+An integer x - Record a new score of x.
 
-Return k.
+"+" - Record a new score that is the sum of the previous two scores. It is guaranteed there will always be two previous scores.
+
+"D" - Record a new score that is double the previous score. It is guaranteed there will always be a previous score.
+
+"C" - Invalidate the previous score, removing it from the record. It is guaranteed there will always be a previous score.
+
+## Return the sum of all the scores on the record.
+
+### Example 1:
+
+Input: ops = ["5","2","C","D","+"]
+
+Output: 30
+
+Explanation:
+
+"5" - Add 5 to the record, record is now [5].
+
+"2" - Add 2 to the record, record is now [5, 2].
+
+"C" - Invalidate and remove the previous score, record is now [5].
+
+"D" - Add 2 \* 5 = 10 to the record, record is now [5, 10].
+
+"+" - Add 5 + 10 = 15 to the record, record is now [5, 10, 15].
+
+The total sum is 5 + 10 + 15 = 30.
 
 <br>
 
-Custom Judge:
+### Example 2:
 
-The judge will test your solution with the following code:
+Input: ops = ["5","-2","4","C","D","9","+","+"]
 
-int[] nums = [...]; // Input array
+Output: 27
 
-int val = ...; // Value to remove
+Explanation:
 
-int[] expectedNums = [...]; // The expected answer with correct length.
+"5" - Add 5 to the record, record is now [5].
 
-// It is sorted with no values equaling val.
+"-2" - Add -2 to the record, record is now [5, -2].
 
-int k = removeElement(nums, val); // Calls your implementation
+"4" - Add 4 to the record, record is now [5, -2, 4].
 
-assert k == expectedNums.length;
+"C" - Invalidate and remove the previous score, record is now [5, -2].
 
-sort(nums, 0, k); // Sort the first k elements of nums
+"D" - Add 2 \* -2 = -4 to the record, record is now [5, -2, -4].
 
-for (int i = 0; i < actualLength; i++) {
-assert nums[i] == expectedNums[i];
-}
+"9" - Add 9 to the record, record is now [5, -2, -4, 9].
 
-If all assertions pass, then your solution will be accepted.
+"+" - Add -4 + 9 = 5 to the record, record is now [5, -2, -4, 9, 5].
 
-Example 1:
+"+" - Add 9 + 5 = 14 to the record, record is now [5, -2, -4, 9, 5, 14].
 
-Input: nums = [3,2,2,3], val = 3
-Output: 2, nums = [2,2,_,_]
-Explanation: Your function should return k = 2, with the first two elements of nums being 2.
-It does not matter what you leave beyond the returned k (hence they are underscores).
+The total sum is 5 + -2 + -4 + 9 + 5 + 14 = 27.
 
-Example 2:
+<br>
 
-Input: nums = [0,1,2,2,3,0,4,2], val = 2
-Output: 5, nums = [0,1,4,0,3,_,_,_]
-Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.
-Note that the five elements can be returned in any order.
-It does not matter what you leave beyond the returned k (hence they are underscores).
+### Example 3:
 
-Constraints:
+Input: ops = ["1"]
 
-0 <= nums.length <= 100
-0 <= nums[i] <= 50
-0 <= val <= 100
+Output: 1
+
+<br>
+
+### Constraints:
+
+1 <= ops.length <= 1000
+ops[i] is "C", "D", "+", or a string representing an integer in the range [-3 * 104, 3 * 104].
+For operation "+", there will always be at least two previous scores on the record.
+For operations "C" and "D", there will always be at least one previous score on the record.
