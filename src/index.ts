@@ -1,18 +1,17 @@
-function rotate(nums: number[], k: number): void {
-  const n = nums.length
-  k = k % n // Asegurarnos de no rotar más de lo necesario
+function maxProfit(prices: number[]): number {
+  let minPrice = Infinity // Precio mínimo encontrado hasta ahora
+  let maxProfit = 0 // Máximo beneficio encontrado hasta ahora
 
-  // Helper para invertir una parte del array
-  function reverse(start: number, end: number): void {
-    while (start < end) {
-      ;[nums[start], nums[end]] = [nums[end], nums[start]]
-      start++
-      end--
-    }
+  for (const price of prices) {
+    // Actualizar el precio mínimo
+    if (price < minPrice) minPrice = price
+
+    // Calcular el beneficio si vendemos en el precio actual
+    const profit = price - minPrice
+
+    // Actualizar el beneficio máximo si es mayor
+    if (profit > maxProfit) maxProfit = profit
   }
 
-  // Pasos del algoritmo
-  reverse(0, n - 1) // Paso 1: Invertir todo el array
-  reverse(0, k - 1) // Paso 2: Invertir los primeros k elementos
-  reverse(k, n - 1) // Paso 3: Invertir el resto
+  return maxProfit
 }
