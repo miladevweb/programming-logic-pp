@@ -1,53 +1,55 @@
-Implement the RandomizedSet class:
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
-RandomizedSet() Initializes the RandomizedSet object.
+### Symbol Value
 
-bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+    I           1
+    V           5
+    X           10
+    L           50
+    C           100
+    D           500
+    M           1000
 
-bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
 
-int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-You must implement the functions of the class such that each function works in average O(1) time complexity.
+    I can be placed before V (5) and X (10) to make 4 and 9.
+    X can be placed before L (50) and C (100) to make 40 and 90.
+    C can be placed before D (500) and M (1000) to make 400 and 900.
 
-Example 1:
+Given a roman numeral, convert it to an integer.
 
-    Input
+### Example 1:
 
-    ["RandomizedSet", "insert", "remove", "insert", "getRandom", "remove", "insert", "getRandom"]
+    Input: s = "III"
 
-    [[], [1], [2], [2], [], [1], [2], []]
+    Output: 3
 
-<br>
+    Explanation: III = 3.
 
-    Output
+### Example 2:
 
-    [null, true, false, true, 2, true, false, 2]
+    Input: s = "LVIII"
 
-    Explanation
+    Output: 58
 
-    RandomizedSet randomizedSet = new RandomizedSet();
+    Explanation: L = 50, V= 5, III = 3.
 
-    randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+### Example 3:
 
-    randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+    Input: s = "MCMXCIV"
 
-    randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+    Output: 1994
 
-    randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
-
-    randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
-
-    randomizedSet.insert(2); // 2 was already in the set, so return false.
-
-    randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
 <br>
 
 ## Constraints:
 
-    -231 <= val <= 231 - 1
+    1 <= s.length <= 15
 
-    At most 2 \* 105 calls will be made to insert, remove, and getRandom.
+    s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 
-    There will be at least one element in the data structure when getRandom is called.
+    It is guaranteed that s is a valid roman numeral in the range [1, 3999].
