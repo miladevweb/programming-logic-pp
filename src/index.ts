@@ -1,7 +1,17 @@
-function isPalindrome(s: string): boolean {
-  // Filtrar solo caracteres alfanuméricos y convertir todo a minúsculas
-  const cleaned = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+function isSubsequence(s: string, t: string): boolean {
+  let sIndex = 0
+  let tIndex = 0
 
-  // Verificar si la cadena limpia es un palíndromo comparando con su reverso
-  return cleaned === cleaned.split('').reverse().join('')
+  // Recorremos ambas cadenas
+  while (sIndex < s.length && tIndex < t.length) {
+    // Si los caracteres coinciden, avanzamos en la cadena s
+    if (s[sIndex] === t[tIndex]) {
+      sIndex++
+    }
+    // Siempre avanzamos en la cadena t
+    tIndex++
+  }
+
+  // Si recorrimos toda la cadena s, significa que es una subsecuencia de t
+  return sIndex === s.length
 }
