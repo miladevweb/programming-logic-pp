@@ -1,17 +1,19 @@
-function maxProfit(prices: number[]): number {
-  let minPrice = Infinity // Precio mínimo encontrado hasta ahora
-  let maxProfit = 0 // Máximo beneficio encontrado hasta ahora
+function canJump(nums: number[]): boolean {
+  let farthest = 0 // El índice más lejano que se puede alcanzar actualmente
 
-  for (const price of prices) {
-    // Actualizar el precio mínimo
-    if (price < minPrice) minPrice = price
+  for (let i = 0; i < nums.length; i++) {
+    if (i > farthest) {
+      // Si no podemos alcanzar el índice actual, devolvemos false
+      return false
+    }
+    // Actualizamos el índice más lejano que podemos alcanzar
+    farthest = Math.max(farthest, i + nums[i])
 
-    // Calcular el beneficio si vendemos en el precio actual
-    const profit = price - minPrice
-
-    // Actualizar el beneficio máximo si es mayor
-    if (profit > maxProfit) maxProfit = profit
+    // Si podemos alcanzar el último índice, devolvemos true
+    if (farthest >= nums.length - 1) {
+      return true
+    }
   }
 
-  return maxProfit
+  return false
 }
