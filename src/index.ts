@@ -1,26 +1,28 @@
-function removeDuplicates(nums: number[]): number {
-  if (nums.length === 0) return 0 // Si el arreglo está vacío, no hay elementos únicos.
+function majorityElement(nums: number[]): number {
+  let candidate = 0
+  let count = 0
 
-  let k = 1 // El primer elemento siempre es único.
+  // Fase 1: Encontrar un candidato
+  for (const num of nums) {
+    if (count === 0) {
+      candidate = num
+    }
+    count += num === candidate ? 1 : -1
+  }
 
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[i - 1]) {
-      // Si el valor actual es diferente al anterior
-      nums[k] = nums[i] // Colocamos el número único en la posición k
-      k++ // Incrementamos k para la siguiente posición de un número único
+  // Fase 2 (opcional): Confirmar que el candidato es mayoritario
+  // Aunque el problema asume que siempre hay un elemento mayoritario,
+  // podríamos contar las apariciones para validar.
+  count = 0
+  for (const num of nums) {
+    if (num === candidate) {
+      count++
     }
   }
 
-  return k // k es el número de elementos únicos
+  if (count > Math.floor(nums.length / 2)) {
+    return candidate
+  }
+
+  throw new Error('No majority element found, which violates the problem constraints')
 }
-
-// Ejemplo de uso:
-const nums1 = [1, 1, 2]
-const k1 = removeDuplicates(nums1)
-console.log(k1) // Salida: 2
-console.log(nums1.slice(0, k1)) // Salida: [1, 2]
-
-const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-const k2 = removeDuplicates(nums2)
-console.log(k2) // Salida: 5
-console.log(nums2.slice(0, k2)) // Salida: [0, 1, 2, 3, 4]
