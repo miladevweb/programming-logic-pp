@@ -1,4 +1,4 @@
-function rotate(nums: number[], k: number): void {
+function rotate(nums: number[], k: number): number[] {
   const n = nums.length
   k = k % n // Asegurarnos de no rotar más de lo necesario
 
@@ -15,4 +15,6 @@ function rotate(nums: number[], k: number): void {
   reverse(0, n - 1) // Paso 1: Invertir todo el array
   reverse(0, k - 1) // Paso 2: Invertir los primeros k elementos
   reverse(k, n - 1) // Paso 3: Invertir el resto
+
+  return nums
 }
