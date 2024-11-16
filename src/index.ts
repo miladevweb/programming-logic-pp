@@ -19,11 +19,8 @@ function romanToInt(s: string): number {
     const next = romanMap[s[i + 1]]
 
     // Si el valor actual es menor que el siguiente, se aplica la sustracción
-    if (current < next) {
-      total -= current
-    } else {
-      total += current
-    }
+    if (current < next) total -= current // CM, IV, IX
+    else total += current
   }
 
   return total
