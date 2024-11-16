@@ -1,5 +1,5 @@
 function reverseWords(s: string): string {
-  // Paso 1: Eliminar los espacios al inicio y final, y dividir la cadena en palabras
+  // Paso 1: Eliminar los espacios al inicio y final con trim, y dividir la cadena en palabras
   const words = s.trim().split(/\s+/) // Usamos una expresión regular para dividir por uno o más espacios
 
   // Paso 2: Invertir el arreglo de palabras
