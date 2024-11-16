@@ -1,6 +1,6 @@
 class RandomizedSet {
   private values: number[] // Array para almacenar los elementos
-  private indexMap: Map<number, number> // Mapa para rastrear índices en el array
+  private indexMap: Map<number, number> // Mapa para rastrear índices en el array <value, index>
 
   constructor() {
     this.values = []
