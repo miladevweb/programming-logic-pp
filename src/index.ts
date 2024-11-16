@@ -4,9 +4,8 @@ function majorityElement(nums: number[]): number {
 
   // Fase 1: Encontrar un candidato
   for (const num of nums) {
-    if (count === 0) {
-      candidate = num
-    }
+    if (count === 0) candidate = num
+
     count += num === candidate ? 1 : -1
   }
 
