@@ -10,8 +10,9 @@ function run(s: string) {
     if (pairs[char]) {
       let last = stack.pop()
       if (last !== pairs[char]) return 'invalid'
-      //
-    } else stack.push(char)
+    } else {
+      stack.push(char)
+    }
   }
 
   return stack.length === 0 ? 'valid' : 'invalid'
