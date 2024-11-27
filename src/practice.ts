@@ -22,3 +22,21 @@ function calPointsPractice(ops: string[]) {
   // 0: initial value of accumulator
   return stack.reduce((sum, score) => sum + score, 0)
 }
+
+function run(s: string) {
+  let stack: number[] = []
+
+  for (let val of s) {
+    if (val === 'C') stack.pop()
+    else if (val === 'D') {
+      let previous = stack[stack.length - 1]
+      stack.push(previous * 2)
+    } else if (val === '+') {
+      let previous = stack[stack.length - 1]
+      let secondPrevious = stack[stack.length - 2]
+      stack.push(previous + secondPrevious)
+    } else stack.push(Number(val))
+  }
+
+  return stack.reduce((pointer, val) => pointer + val, 0)
+}
