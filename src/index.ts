@@ -1,4 +1,4 @@
-// increasing order
+// non-decreasing order
 function merge(nums1: number[], m: number, nums2: number[], n: number) {
   let i = m - 1 // points the last element of the valid part of nums1
   let j = n - 1 // points the last element of nums2
