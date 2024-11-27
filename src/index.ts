@@ -1,11 +1,14 @@
 function removeDuplicates(nums: number[]): number {
   if (nums.length === 0) return 0 // Si el arreglo está vacío, no hay elementos únicos.
 
+  // Number of unique elements
   let k = 1 // El primer elemento siempre es único.
 
+  // Comenzamos desde el segundo elemento
   for (let i = 1; i < nums.length; i++) {
+    // Si el valor actual es diferente al anterior
+    // nums[1]: second element
     if (nums[i] !== nums[i - 1]) {
-      // Si el valor actual es diferente al anterior
       nums[k] = nums[i] // Colocamos el número único en la posición k
       k++ // Incrementamos k para la siguiente posición de un número único
     }
