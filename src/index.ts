@@ -1,5 +1,5 @@
 function removeElement(nums: number[], val: number) {
-  let k = 0
+  let k = 0 
   for (let n of nums) {
     if (n !== val) {
       nums[k] = n
