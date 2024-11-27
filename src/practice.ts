@@ -14,3 +14,12 @@ function battleHordePractice(zombies: string, humans: string) {
   if (diff === 0) return 'draw'
   return z > h ? diff + 'z' : diff + 'h'
 }
+
+function run(zombies: string, humans: string) {
+  let z = zombies.split('').reduce((pointer, val) => pointer + Number(val), 0)
+  let h = humans.split('').reduce((pointer, val) => pointer + Number(val), 0)
+
+  let diff = Math.abs(z - h)
+  if (diff === 0) return 'draw'
+  return z > h ? diff + 'z' : diff + 'h'
+}
