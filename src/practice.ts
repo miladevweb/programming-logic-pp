@@ -32,7 +32,7 @@ function run(nums1: number[], m: number, nums2: number[], n: number): void {
 
   // While nums1 and nums2 have elements....
   while (i >= 0 && j >= 0) {
-    if (nums1[i] >= nums2[j]) {
+    if (nums1[i] > nums2[j]) {
       nums1[k] = nums1[i]
       i--
     } else {
