@@ -16,7 +16,7 @@ function isValidPractice(s: string) {
   return stack.length === 0 ? 'valid' : 'invalid'
 }
 
-function run(s: string) {
+function run(s: string): 'valid' | 'invalid' {
   const stack: string[] = []
   const pairs: { [key: string]: string } = {
     '}': '{',
@@ -24,12 +24,13 @@ function run(s: string) {
     ']': '[',
   }
 
-  for (let char of s) {
-    if (pairs[char]) {
-      let last = stack.pop()
-      if (last !== pairs[char]) return 'invalid'
+  // It empties stack
+  for (let val of s) {
+    if (pairs[val]) {
+      const last = stack.pop() // delete and get last bracket - it must be the same as the one we just popped
+      if (last !== pairs[val]) return 'invalid' // it validates if the last bracket is the same as the one we just popped
     } else {
-      stack.push(char)
+      stack.push(val) // Add open bracket
     }
   }
 
