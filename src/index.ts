@@ -1,27 +1,23 @@
 function majorityElement(nums: number[]): number {
-  let candidate = 0
+  let candidate: number | null = null
   let count = 0
 
-  // Fase 1: Encontrar un candidato
-  for (const num of nums) {
-    if (count === 0) candidate = num
-
+  // Primera pasada: Encontrar el candidato
+  for (let num of nums) {
+    if (count === 0) {
+      candidate = num
+    }
     count += num === candidate ? 1 : -1
   }
 
-  // Fase 2 (opcional): Confirmar que el candidato es mayoritario
-  // Aunque el problema asume que siempre hay un elemento mayoritario,
-  // podríamos contar las apariciones para validar.
-  count = 0
-  for (const num of nums) {
-    if (num === candidate) {
-      count++
-    }
-  }
-
-  if (count > Math.floor(nums.length / 2)) {
-    return candidate
-  }
-
-  throw new Error('No majority element found, which violates the problem constraints')
+  // Dado que el problema garantiza que siempre existe un elemento mayoritario, no es necesario hacer una segunda pasada.
+  return candidate!
 }
+
+// Ejemplo 1:
+const nums1 = [3, 2, 3]
+console.log(majorityElement(nums1)) // Salida: 3
+
+// Ejemplo 2:
+const nums2 = [2, 2, 1, 1, 1, 2, 2]
+console.log(majorityElement(nums2)) // Salida: 2
