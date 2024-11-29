@@ -19,23 +19,26 @@ function calPointsPractice(ops: string[]) {
 
   // sum: accumulator of the iterations
   // score: current value of array
+  // The callback does a sum += score
   // 0: initial value of accumulator
   return stack.reduce((sum, score) => sum + score, 0)
 }
 
-function run(s: string) {
+function run(ops: string[]): number {
   let stack: number[] = []
 
-  for (let val of s) {
+  for (let val of ops) {
     if (val === 'C') stack.pop()
-    else if (val === 'D') {
-      let previous = stack[stack.length - 1]
-      stack.push(previous * 2)
-    } else if (val === '+') {
-      let previous = stack[stack.length - 1]
-      let secondPrevious = stack[stack.length - 2]
+    else if (val === '+') {
+      const previous = stack[stack.length - 2]
+      const secondPrevious = stack[stack.length - 3]
       stack.push(previous + secondPrevious)
-    } else stack.push(Number(val))
+    } else if (val === 'D') {
+      const previous = stack[stack.length - 2]
+      stack.push(previous * 3)
+    } else {
+      stack.push(Number(val))
+    }
   }
 
   return stack.reduce((pointer, val) => pointer + val, 0)
