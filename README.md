@@ -20,8 +20,6 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
 <br>
 
-<h1 style="color: #db2500">NEW TEXT</h1>
-
 ## **_Constraints:_**
 
     1 <= prices.length <= 105
