@@ -4,7 +4,7 @@ You want to maximize your profit by choosing a single day to buy one stock and c
 
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-### Example 1:
+### **_Example 1:_**
 
     Input: prices = [7,1,5,3,6,4]
     Output: 5
@@ -12,7 +12,7 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
     Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
 
-### Example 2:
+### **_Example 2:_**
 
     Input: prices = [7,6,4,3,1]
     Output: 0
@@ -20,7 +20,9 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
 <br>
 
-## Constraints:
+<h1 style="color: #db2500">NEW TEXT</h1>
+
+## **_Constraints:_**
 
     1 <= prices.length <= 105
     0 <= prices[i] <= 104
