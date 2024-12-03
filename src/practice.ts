@@ -12,3 +12,15 @@ function run(nums: number[]): number {
 
   return candidate!
 }
+
+function execute(nums: number[]) {
+  let count = 0
+  let winner: number | null = null
+
+  for (let val of nums) {
+    if (count === 0) winner = val
+
+    count += winner === val ? 1 : -1
+  }
+  return winner
+}

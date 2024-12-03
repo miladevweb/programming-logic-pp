@@ -21,3 +21,5 @@ console.log(majorityElement(nums1)) // Salida: 3
 // Ejemplo 2:
 const nums2 = [2, 2, 1, 1, 1, 2, 2]
 console.log(majorityElement(nums2)) // Salida: 2
+
+
