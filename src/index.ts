@@ -1,6 +1,6 @@
 function rotate(nums: number[], k: number): number[] {
   const n = nums.length
-  k = k % n // Asegurarnos de no rotar más de lo necesario
+  k = k % n // It'll always be k or less than n
 
   // Helper para invertir una parte del array
   function reverse(start: number, end: number): void {
