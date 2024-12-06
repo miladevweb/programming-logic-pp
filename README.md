@@ -1,33 +1,47 @@
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+You are developing a document version control system. Given an array of document versions where each version is represented as a string in the format major.minor.patch (e.g., "2.5.1"), write a function that sorts these versions in ascending order according to semantic versioning rules.
 
-#### Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+In semantic versioning, versions are compared by:
 
-- Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+    First comparing the major versions.
+    If the major versions are equal, then comparing the minor versions.
+    If the minor versions are also equal, then comparing the patch versions.
+    Each component (major, minor, patch) should be compared as integers, not as strings.
 
-- Return k.
+For example:
 
-<br>
+"2.10.1" comes after "2.2.1" because 10 > 2.
 
-### Example 1:
+### **_Example 1:_**
 
-    Input: nums = [1,1,2]
-    Output: 2, nums = [1,2,_]
-    Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+Input: ["1.0.1", "2.0.0", "1.2.3", "1.0.10"]
 
-    It does not matter what you leave beyond the returned k (hence they are underscores).
+Output: ["1.0.1", "1.0.10", "1.2.3", "2.0.0"]
 
-### Example 2:
+Explanation:
 
-    Input: nums = [0,0,1,1,1,2,2,3,3,4]
-    Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-    Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+- "1.0.1" comes first because it has the lowest major version among all equal components.
+- "1.0.10" comes before "1.2.3" because 0 in the minor version is less than 2.
 
-    It does not matter what you leave beyond the returned k (hence they are underscores).
+### **_Example 2:_**
 
-<br>
+Input: ["2.5.1", "2.10.1", "2.1.15", "2.1.2"]
 
-## Constraints:
+Output: ["2.1.2", "2.1.15", "2.5.1", "2.10.1"]
 
-    1 <= nums.length <= 3 \* 104
-    -100 <= nums[i] <= 100
-    nums is sorted in non-decreasing order.
+Explanation:
+
+- All versions have the same major version 2.
+- Compare the minor versions. For instance, "2.1.x" comes before "2.5.x" and "2.10.x".
+- Finally, "2.1.2" comes before "2.1.15" because 2 < 15.
+
+## **_Requirements:_**
+
+- The function should accept an array of version strings as input.
+- Each version string will be in the format X.Y.Z, where:
+
+        X = major version
+        Y = minor version
+        Z = patch version
+
+- The function should return the sorted array of versions in ascending order.
+- Let me know if you need further clarifications!

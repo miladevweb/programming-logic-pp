@@ -1,29 +1,16 @@
-function removeDuplicates(nums: number[]): number {
-  if (nums.length === 0) return 0 // Si el arreglo está vacío, no hay elementos únicos.
+function run(patches: string[]) {
+  patches.sort((a, b) => {
+    // split them into major, minor and patch and then transform into numbers and destructure them
+    const [majorA, minorA, patchA] = a.split('.').map((n) => Number(n))
+    const [majorB, minorB, patchB] = b.split('.').map((n) => Number(n))
 
-  // Number of unique elements
-  let k = 1 // El primer elemento siempre es único.
+    // if majors are equal then we'll evaluate the minors....
+    if (majorA !== majorB) return majorA - majorB
+    if (minorA !== minorB) return minorA - minorB
+    return patchA - patchB
+  })
 
-  // Comenzamos desde el segundo elemento
-  for (let i = 1; i < nums.length; i++) {
-    // Si el valor actual es diferente al anterior
-    // nums[1]: second element
-    if (nums[i] !== nums[i - 1]) {
-      nums[k] = nums[i] // Colocamos el número único en la posición k
-      k++ // Incrementamos k para la siguiente posición de un número único
-    }
-  }
-
-  return k // k es el número de elementos únicos
+  return patches
 }
 
-// Ejemplo de uso:
-const nums1 = [1, 1, 2]
-const k1 = removeDuplicates(nums1)
-console.log(k1) // Salida: 2
-console.log(nums1.slice(0, k1)) // Salida: [1, 2]
-
-const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-const k2 = removeDuplicates(nums2)
-console.log(k2) // Salida: 5
-console.log(nums2.slice(0, k2)) // Salida: [0, 1, 2, 3, 4]
+run(['1.10.1', '1.2.1', '3.1.0', '0.10.1'])
