@@ -26,3 +26,15 @@ function run(nums: number[], val: number) {
 
   return k
 }
+
+function execute(nums: number[], val: number): number {
+  let k = 0
+
+  for (let n of nums) {
+    if (n !== val) {
+      nums[k] = n
+      k++
+    }
+  }
+  return k
+}
