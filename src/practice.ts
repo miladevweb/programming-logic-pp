@@ -23,3 +23,17 @@ function run(zombies: string, humans: string) {
   if (diff === 0) return 'draw'
   return z > h ? diff + 'z' : diff + 'h'
 }
+
+function execute(zombies: string, humans: string): string {
+  let z = 0
+  let h = 0
+
+  for (let i = 0; i < zombies.length; i++) {
+    z += Number(zombies[i])
+    h += Number(humans[i])
+  }
+
+  let diff = Math.abs(z - h)
+  if (diff === 0) return 'draw'
+  return z > h ? diff + 'z' : diff + 'h'
+}
