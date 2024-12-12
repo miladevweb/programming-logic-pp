@@ -1,3 +1,24 @@
+function execute(ops: string[]): number {
+  if (ops.length === 0) return 0
+  let stack: number[] = []
+
+  for (let val of ops) {
+    if (val === 'C') stack.pop()
+    else if (val === 'D') {
+      let last = stack[stack.length - 1]
+      stack.push(last * 2)
+      //
+    } else if (val === '+') {
+      let previous = stack[stack.length - 1]
+      let secondPrevious = stack[stack.length - 2]
+      stack.push(previous + secondPrevious)
+      //
+    } else stack.push(Number(val))
+  }
+
+  return stack.reduce((acc, val) => acc + val, 0)
+}
+
 function calPointsPractice(ops: string[]) {
   let stack: number[] = []
 
@@ -30,12 +51,12 @@ function run(ops: string[]): number {
   for (let val of ops) {
     if (val === 'C') stack.pop()
     else if (val === '+') {
-      const previous = stack[stack.length - 2]
-      const secondPrevious = stack[stack.length - 3]
+      const previous = stack[stack.length - 1]
+      const secondPrevious = stack[stack.length - 2]
       stack.push(previous + secondPrevious)
     } else if (val === 'D') {
-      const previous = stack[stack.length - 2]
-      stack.push(previous * 3)
+      const previous = stack[stack.length - 1]
+      stack.push(previous * 2)
     } else {
       stack.push(Number(val))
     }
