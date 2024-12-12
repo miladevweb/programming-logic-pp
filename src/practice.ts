@@ -30,7 +30,7 @@ function run(nums: number[]): number {
 }
 
 // non-decreasing => [1,1,1,4,5,5]
-function execute(nums: number[]) {
+function execute(nums: number[]): number {
   if (nums.length === 0) return 0
   let k = 1 // the first element is always unique
 
@@ -41,4 +41,6 @@ function execute(nums: number[]) {
       k++
     }
   }
+
+  return k
 }
