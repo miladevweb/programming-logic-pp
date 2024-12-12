@@ -1,3 +1,23 @@
+function execute(s: string): 'valid' | 'invalid' {
+  let stack: string[] = []
+  const pairs: { [key: string]: string } = {
+    ')': '(',
+    '}': '{',
+    ']': '[',
+  }
+
+  // It empties stack array
+  for (let char of s) {
+    if (!(char in pairs)) stack.push(char) // add open bracket
+    else {
+      let last = stack.pop() // remove open bracket
+      if (last !== pairs[char]) return 'invalid' // If last isn't an open bracket return invalid, since only open brackets must be added into the stack
+    }
+  }
+
+  return stack.length === 0 ? 'valid' : 'invalid'
+}
+
 function isValidPractice(s: string) {
   const stack: string[] = []
   const pairs: { [key: string]: string } = {
