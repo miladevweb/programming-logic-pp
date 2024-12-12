@@ -18,3 +18,16 @@ function run(prices: number[]): number {
 }
 
 console.log(run([5, 4, 10, 2, 1]))
+
+function execute(prices: number[]): number {
+  let minPrice = Infinity
+  let maxProfit = 0
+
+  for (let price of prices) {
+    if (price < minPrice) minPrice = price
+    const profit = price - minPrice
+    if (profit > maxProfit) maxProfit = profit
+  }
+
+  return maxProfit
+}
